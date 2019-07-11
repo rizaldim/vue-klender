@@ -11,6 +11,7 @@
 				:key="cell.dateTime"
 				:dateTime="cell.dateTime"
 				:date="cell.date"
+				:is-current-month="cell.isCurrentMonth"
 				/>
 		</div>
 	</div>
@@ -47,10 +48,12 @@ export default {
 
 			let day = startOfFirstWeekOfCurrentMonth
 			const cells = []
+			const currentMonth = firstDayOfCurrentMonth.get('month')
 			for (var i = 0; i < daysShownCount; i++) {
 				cells.push({
+					date: day.format('D'),
 					dateTime: day.format('YYYY-MM-DD'),
-					date: day.format('D')
+					isCurrentMonth: day.get('month') == currentMonth
 				})
 				day = day.add(1, 'day')
 			}
@@ -71,32 +74,44 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .calendar {
 	width: 300px;
 	position: relative;
-}
-.calendar__month-indicator {
-	text-align: center;
-}
-.calendar__prev {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-.calendar__next {
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-.calendar__day-of-week, .calendar__date-grid {
-	display: grid;
-	grid-template-columns: repeat(7, 1fr);
-}
-.calendar__day-of-week {
-	height: 40px;
-}
-.calendar__date-grid button {
-	height: 40px;
+
+	&__month-indicator {
+		text-align: center;
+	}
+
+	&__prev {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__next {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	&__day-of-week,
+	&__date-grid {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+	}
+
+	&__day-of-week {
+		height: 40px;
+	}
+
+	&__date-cell {
+		height: 40px;
+
+		&--different-month {
+			background-color: red;
+		}
+	}
+
 }
 </style>
