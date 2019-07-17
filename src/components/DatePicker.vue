@@ -76,10 +76,18 @@ export default {
 
 <style lang="scss">
 .calendar {
-	width: 300px;
+	box-sizing: border-box;
+	font-family: sans-serif;
 	position: relative;
+	width: 300px;
+
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
 
 	&__month-indicator {
+		height: 40px;
+		line-height: 40px;
 		text-align: center;
 	}
 
@@ -106,10 +114,25 @@ export default {
 	}
 
 	&__date-cell {
+		background-color: white;
+		border: 0;
+		border-radius: 25%;
+		font-size: 16px;
 		height: 40px;
+		padding: 0;
+
+		&:hover {
+			background-color: #add8e6	;
+			color: white;
+		}
 
 		&--different-month {
-			background-color: red;
+			color: #aaaaaa;
+
+			&:hover {
+				background-color: white;
+				color: #aaaaaa;
+			}
 		}
 	}
 
