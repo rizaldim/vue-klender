@@ -1,29 +1,44 @@
 .calendar {
 	box-sizing: border-box;
-	font-family: sans-serif;
-	position: relative;
 	width: 300px;
+
+	position: relative;
+
+	font-family: sans-serif;
 
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
 
+	button {
+		border: 0;
+	}
+
 	&__month-indicator {
 		height: 40px;
+
 		line-height: 40px;
 		text-align: center;
 	}
 
-	&__prev {
+	&__prev,
+	&__next {
+		width: 36px;
+		height: 36px;
+
 		position: absolute;
-		top: 0;
+
+		background-color: transparent;
+	}
+
+	&__prev {
 		left: 0;
+		top: 0;
 	}
 
 	&__next {
-		position: absolute;
-		top: 0;
 		right: 0;
+		top: 0;
 	}
 
 	&__day-of-week,
@@ -34,29 +49,37 @@
 
 	&__day-of-week {
 		height: 40px;
+
+		text-align: center;
 	}
 
 	&__date-cell {
-		background-color: white;
-		border: 0;
-		border-radius: 25%;
-		font-size: 16px;
 		height: 40px;
 		padding: 0;
+		border-radius: 25%;
 
-		&:hover {
-			background-color: #add8e6	;
-			color: white;
-		}
+		background-color: white;
+		color: #aaaaaa;
+		font-size: 16px;
 
-		&--different-month {
-			color: #aaaaaa;
+		&--is-selectable {
+			color: black;
+			cursor: pointer;
 
 			&:hover {
-				background-color: white;
-				color: #aaaaaa;
+				background-color: #add8e6	;
+				color: white;
+			}
+		}
+
+		&--is-selected {
+			background-color: purple	;
+			color: white;
+
+			&:hover {
+				background-color: purple	;
+				color: white;
 			}
 		}
 	}
-
 }

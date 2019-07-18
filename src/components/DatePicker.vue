@@ -1,8 +1,12 @@
 <template>
 	<div class="calendar">
 		<div class="calendar__month-indicator">{{ monthString() }}</div>
-		<button type="button" class="calendar__prev" @click="onClickPrev()">&lt;</button>
-		<button type="button" class="calendar__next" @click="onClickNext()">&gt;</button>
+		<button type="button" class="calendar__prev" @click="onClickPrev()">
+			<img src="@/assets/arrow-back.svg" />
+		</button>
+		<button type="button" class="calendar__next" @click="onClickNext()">
+			<img src="@/assets/arrow-forward.svg" />
+		</button>
 		<div class="calendar__day-of-week">
 			<div v-for="name in dayNames" :key="name">{{ name }}</div>
 		</div>
@@ -11,7 +15,7 @@
 				:key="cell.dateTime"
 				:dateTime="cell.dateTime"
 				:date="cell.date"
-				:is-current-month="cell.isCurrentMonth"
+				:selectable="cell.isCurrentMonth"
 				/>
 		</div>
 	</div>
@@ -28,7 +32,8 @@ export default {
 	data() {
 		return {
 			firstDayOfCurrentMonth: dayjs().set('date', 1),
-			dayNames: []
+			dayNames: [],
+			selectedDates: []
 		}
 	},
 	created() {
