@@ -13,76 +13,75 @@
 	button {
 		border: 0;
 	}
+}
 
-	&__month-indicator {
-		height: 40px;
+.calendar__month-indicator {
+	height: 40px;
 
-		line-height: 40px;
-		text-align: center;
+	line-height: 40px;
+	text-align: center;
+}
+
+.calendar__prev,
+.calendar__next {
+	width: 36px;
+	height: 36px;
+
+	position: absolute;
+
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.calendar__prev {
+	left: 0;
+	top: 0;
+}
+
+.calendar__next {
+	right: 0;
+	top: 0;
+}
+
+.calendar__day-of-week,
+.calendar__date-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-gap: 4px;
+}
+
+.calendar__day-of-week {
+	height: 40px;
+
+	text-align: center;
+}
+
+.calendar__empty-cell {
+	background-color: white;
+}
+
+.calendar__date-cell {
+	height: 36px;
+	padding: 0;
+	border-radius: 25%;
+
+	background-color: white;
+	color: black;
+	font-size: 16px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #add8e6	;
+		color: white;
 	}
+}
 
-	&__prev,
-	&__next {
-		width: 36px;
-		height: 36px;
+.calendar__date-cell--is-selected {
+	background-color: purple	;
+	color: white;
 
-		position: absolute;
-
-		background-color: transparent;
-		cursor: pointer;
-	}
-
-	&__prev {
-		left: 0;
-		top: 0;
-	}
-
-	&__next {
-		right: 0;
-		top: 0;
-	}
-
-	&__day-of-week,
-	&__date-grid {
-		display: grid;
-		grid-template-columns: repeat(7, 1fr);
-	}
-
-	&__day-of-week {
-		height: 40px;
-
-		text-align: center;
-	}
-
-	&__date-cell {
-		height: 36px;
-		padding: 0;
-		border-radius: 25%;
-		margin: 2px;
-
-		background-color: white;
-		color: #aaaaaa;
-		font-size: 16px;
-		cursor: default;
-
-		&--is-selectable {
-			color: black;
-			cursor: pointer;
-
-			&:hover {
-				background-color: #add8e6	;
-				color: white;
-			}
-		}
-
-		&--is-selected {
-			background-color: purple	;
-			color: white;
-
-			&:hover {
-				background-color: purple	;
-				color: white;
-			}
-		}
+	&:hover {
+		background-color: purple	;
+		color: white;
 	}
 }

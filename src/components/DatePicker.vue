@@ -15,8 +15,8 @@
 				:key="cell.dateTime"
 				:dateTime="cell.dateTime"
 				:date="cell.date"
-				:initial-selected="isCellSelected(cell.dateTime)"
-				:selectable="cell.selectable"
+				:initial-selected="isCellSelected(cell.dateTime, cell.differentMonth)"
+				:different-month="cell.differentMonth"
 				@click="onClickDate(cell.dateTime)"
 				/>
 		</div>
@@ -60,7 +60,7 @@ export default {
 				cells.push({
 					date: day.format('D'),
 					dateTime: day.format('YYYY-MM-DD'),
-					selectable: this.isCellSelectable(day, currentMonth)
+					differentMonth: day.get('month') != currentMonth
 				})
 				day = day.add(1, 'day')
 			}
@@ -85,10 +85,8 @@ export default {
 				this.selectedDates.push(dateTime)
 			}
 		},
-		isCellSelectable (day, currentMonth) {
-			return day.get('month') == currentMonth
-		},
-		isCellSelected (day) {
+		isCellSelected (day, differentMonth) {
+			if (differentMonth) return false
 			return this.selectedDates.indexOf(day) > -1
 		}
 	}

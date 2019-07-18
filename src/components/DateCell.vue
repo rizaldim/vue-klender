@@ -1,17 +1,17 @@
 <template>
-	<button class="calendar__date-cell"
-		:class="cssClass"
-		@click="onClick"
-		>
-		<time :datetime="dateTime">{{ date }}</time>
+	<button :class="cssClass" @click="onClick">
+		<time v-if="!differentMonth" :datetime="dateTime">{{ date }}</time>
 	</button>
 </template>
 
 <script>
+import dayjs from 'dayjs'
+
 export default {
 	name: 'DateCell',
 	data () {
 		return {
+			timeCreated: dayjs().format(),
 			selected: this.initialSelected
 		}
 	},
@@ -24,7 +24,7 @@ export default {
 			type: String,
 			required: true
 		},
-		selectable: {
+		differentMonth: {
 			type: Boolean,
 			default: true
 		},
@@ -36,14 +36,15 @@ export default {
 	computed: {
 		cssClass () {
 			return {
-				'calendar__date-cell--is-selectable': this.selectable,
-				'calendar__date-cell--is-selected': this.selected
+				'calendar__date-cell': !this.differentMonth,
+				'calendar__empty-cell': this.differentMonth,
+				'calendar__date-cell--is-selected': !this.differentMonth && this.selected
 			}
 		}
 	},
 	methods: {
 		onClick () {
-			if (this.selectable) {
+			if (!this.differentMonth) {
 				this.selected = !this.selected
 				this.$emit('click')
 			}
