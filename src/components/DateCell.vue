@@ -45,6 +45,7 @@ export default {
 		onClick () {
 			if (this.selectable) {
 				this.selected = !this.selected
+				this.$emit('click')
 			}
 		}
 	}

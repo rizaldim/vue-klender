@@ -15,7 +15,9 @@
 				:key="cell.dateTime"
 				:dateTime="cell.dateTime"
 				:date="cell.date"
-				:selectable="cell.isCurrentMonth"
+				:initial-selected="isCellSelected(cell.dateTime)"
+				:selectable="cell.selectable"
+				@click="onClickDate(cell.dateTime)"
 				/>
 		</div>
 	</div>
@@ -29,14 +31,14 @@ export default {
 	components: {
 		DateCell
 	},
-	data() {
+	data () {
 		return {
 			firstDayOfCurrentMonth: dayjs().set('date', 1),
 			dayNames: [],
 			selectedDates: []
 		}
 	},
-	created() {
+	created () {
 		var names = []
 		const startOfWeek = dayjs().startOf('week')
 		for (var i = 0; i < 7; i++) {
@@ -45,7 +47,7 @@ export default {
 		this.dayNames = names
 	},
 	computed: {
-		cells() {
+		cells () {
 			const firstDayOfCurrentMonth = this.firstDayOfCurrentMonth
 			const startOfFirstWeekOfCurrentMonth = firstDayOfCurrentMonth.startOf('week')
 			const endOfLastWeekOfCurrentMonth = firstDayOfCurrentMonth.endOf('month').endOf('week')
@@ -58,7 +60,7 @@ export default {
 				cells.push({
 					date: day.format('D'),
 					dateTime: day.format('YYYY-MM-DD'),
-					isCurrentMonth: day.get('month') == currentMonth
+					selectable: this.isCellSelectable(day, currentMonth)
 				})
 				day = day.add(1, 'day')
 			}
@@ -66,14 +68,28 @@ export default {
 		}
 	},
 	methods: {
-		monthString() {
+		monthString () {
 			return this.firstDayOfCurrentMonth.format('MMMM YYYY')
 		},
-		onClickPrev() {
+		onClickPrev () {
 			this.firstDayOfCurrentMonth = this.firstDayOfCurrentMonth.subtract(1, 'month')
 		},
-		onClickNext() {
+		onClickNext () {
 			this.firstDayOfCurrentMonth = this.firstDayOfCurrentMonth.add(1, 'month')
+		},
+		onClickDate (dateTime) {
+			const index = this.selectedDates.indexOf(dateTime)
+			if (index > -1) {
+				this.selectedDates.splice(index, 1)
+			} else {
+				this.selectedDates.push(dateTime)
+			}
+		},
+		isCellSelectable (day, currentMonth) {
+			return day.get('month') == currentMonth
+		},
+		isCellSelected (day) {
+			return this.selectedDates.indexOf(day) > -1
 		}
 	}
 }
