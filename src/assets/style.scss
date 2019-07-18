@@ -1,0 +1,62 @@
+.calendar {
+	box-sizing: border-box;
+	font-family: sans-serif;
+	position: relative;
+	width: 300px;
+
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
+
+	&__month-indicator {
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+	}
+
+	&__prev {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	&__next {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	&__day-of-week,
+	&__date-grid {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+	}
+
+	&__day-of-week {
+		height: 40px;
+	}
+
+	&__date-cell {
+		background-color: white;
+		border: 0;
+		border-radius: 25%;
+		font-size: 16px;
+		height: 40px;
+		padding: 0;
+
+		&:hover {
+			background-color: #add8e6	;
+			color: white;
+		}
+
+		&--different-month {
+			color: #aaaaaa;
+
+			&:hover {
+				background-color: white;
+				color: #aaaaaa;
+			}
+		}
+	}
+
+}
