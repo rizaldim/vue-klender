@@ -1,16 +1,16 @@
 <template>
-	<div class="calendar">
-		<div class="calendar__month-indicator">{{ monthString() }}</div>
-		<button type="button" class="calendar__prev" @click="onClickPrev()">
+	<div class="cal">
+		<div class="month-indicator">{{ monthString() }}</div>
+		<button type="button" class="prev" @click="onClickPrev()">
 			<img src="@/assets/arrow-back.svg" />
 		</button>
-		<button type="button" class="calendar__next" @click="onClickNext()">
+		<button type="button" class="next" @click="onClickNext()">
 			<img src="@/assets/arrow-forward.svg" />
 		</button>
-		<div class="calendar__day-of-week">
+		<div class="day-of-week">
 			<div v-for="name in dayNames" :key="name">{{ name }}</div>
 		</div>
-		<div class="calendar__date-grid">
+		<div class="date-grid">
 			<date-cell v-for="cell in cells"
 				:key="cell.dateTime"
 				:dateTime="cell.dateTime"
@@ -93,4 +93,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="@/assets/style.scss"></style>
+<style lang="scss" src="@/assets/style.scss" scoped></style>

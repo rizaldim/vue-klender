@@ -5,13 +5,10 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
-
 export default {
 	name: 'DateCell',
 	data () {
 		return {
-			timeCreated: dayjs().format(),
 			selected: this.initialSelected
 		}
 	},
@@ -36,9 +33,9 @@ export default {
 	computed: {
 		cssClass () {
 			return {
-				'calendar__date-cell': !this.differentMonth,
-				'calendar__empty-cell': this.differentMonth,
-				'calendar__date-cell--is-selected': !this.differentMonth && this.selected
+				'date-cell': !this.differentMonth,
+				'date-cell--is-selected': !this.differentMonth && this.selected,
+				'empty-cell': this.differentMonth
 			}
 		}
 	},
