@@ -1,50 +1,65 @@
 {
-  "name": "vue-klender",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "core-js": "^2.6.5",
-    "dayjs": "^1.8.15",
-    "lodash": "^4.17.13",
-    "vue": "^2.6.10"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.2",
-    "@vue/cli-plugin-eslint": "^3.9.2",
-    "@vue/cli-service": "^3.9.3",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "sass": "^1.22.6",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+	"name": "@rizaldim/vue-klender",
+	"version": "0.1.2",
+	"license": "Apache-2.0",
+	"description": "Yet another date picker component for vue.js",
+	"author": {
+		"name": "Rizaldi Martaputra",
+		"email": "rizaldi.m@gmail.com",
+		"url": "https://rizaldim.com"
+	},
+	"main": "./dist/@rizaldim/vue-klender.common.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rizaldim/vue-klender"
+	},
+	"keywords": [
+		"vuejs",
+		"date picker"
+	],
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build --target lib ./src/components/DatePicker.vue",
+		"lint": "vue-cli-service lint"
+	},
+	"dependencies": {
+		"core-js": "^2.6.5",
+		"dayjs": "^1.8.15",
+		"lodash": "^4.17.13",
+		"vue": "^2.6.10"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "^3.9.2",
+		"@vue/cli-plugin-eslint": "^3.9.2",
+		"@vue/cli-service": "^3.9.3",
+		"babel-eslint": "^10.0.1",
+		"eslint": "^5.16.0",
+		"eslint-plugin-vue": "^5.0.0",
+		"sass": "^1.22.6",
+		"sass-loader": "^7.1.0",
+		"vue-template-compiler": "^2.6.10"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"extends": [
+			"plugin:vue/essential",
+			"eslint:recommended"
+		],
+		"rules": {},
+		"parserOptions": {
+			"parser": "babel-eslint"
+		}
+	},
+	"postcss": {
+		"plugins": {
+			"autoprefixer": {}
+		}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions"
+	]
 }
