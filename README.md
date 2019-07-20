@@ -16,3 +16,4 @@ Not published yet.
 - [ ] Configurable css styling (color, width, etc).
 - [ ] Show holidays.
 - [ ] Localization.
+- [ ] Add CI to build and publish.
