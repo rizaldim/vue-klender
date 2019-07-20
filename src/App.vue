@@ -1,6 +1,9 @@
 <template>
 	<div id="app">
-		<date-picker />
+		<date-picker @change-selected-dates="onChangeSelectedDates" />
+		<ol>
+			<li v-for="date in dates" :key="date">{{ date }}</li>
+		</ol>
 	</div>
 </template>
 
@@ -11,6 +14,16 @@ export default {
 	name: 'app',
 	components: {
 		DatePicker
+	},
+	data () {
+		return {
+			dates: []
+		}
+	},
+	methods: {
+		onChangeSelectedDates (dates) {
+			this.dates = dates
+		}
 	}
 }
 </script>

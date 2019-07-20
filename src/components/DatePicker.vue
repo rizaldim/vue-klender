@@ -84,6 +84,7 @@ export default {
 			} else {
 				this.selectedDates.push(dateTime)
 			}
+			this.$emit('change-selected-dates', this.selectedDates)
 		},
 		isCellSelected (day, differentMonth) {
 			if (differentMonth) return false
