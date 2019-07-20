@@ -1,6 +1,6 @@
 {
-	"name": "@rizaldim/vue-klender",
-	"version": "0.1.2",
+	"name": "vue-klender",
+	"version": "0.0.4",
 	"license": "Apache-2.0",
 	"description": "Yet another date picker component for vue.js",
 	"author": {
@@ -8,7 +8,15 @@
 		"email": "rizaldi.m@gmail.com",
 		"url": "https://rizaldim.com"
 	},
-	"main": "./dist/@rizaldim/vue-klender.common.js",
+	"files": [
+		"dist/"
+	],
+	"main": "dist/DatePicker.umd.js",
+	"module": "dist/DatePicker.esm.js",
+	"unpkg": "dist/DatePicker.min.js",
+	"browser": {
+		"./sfc": "src/DatePicker.vue"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/rizaldim/vue-klender"
@@ -19,7 +27,10 @@
 	],
 	"scripts": {
 		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build --target lib ./src/components/DatePicker.vue",
+		"build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/DatePicker.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/DatePicker.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/DatePicker.min.js",
 		"lint": "vue-cli-service lint"
 	},
 	"dependencies": {
@@ -35,6 +46,10 @@
 		"babel-eslint": "^10.0.1",
 		"eslint": "^5.16.0",
 		"eslint-plugin-vue": "^5.0.0",
+		"rollup": "^1.17.0",
+		"rollup-plugin-buble": "^0.19.8",
+		"rollup-plugin-commonjs": "^10.0.1",
+		"rollup-plugin-vue": "^5.0.1",
 		"sass": "^1.22.6",
 		"sass-loader": "^7.1.0",
 		"vue-template-compiler": "^2.6.10"

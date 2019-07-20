@@ -2,10 +2,10 @@
 	<div class="cal">
 		<div class="month-indicator">{{ monthString() }}</div>
 		<button type="button" class="prev" @click="onClickPrev()">
-			<img src="@/assets/arrow-back.svg" />
+			<img src="./assets/arrow-back.svg" />
 		</button>
 		<button type="button" class="next" @click="onClickNext()">
-			<img src="@/assets/arrow-forward.svg" />
+			<img src="./assets/arrow-forward.svg" />
 		</button>
 		<div class="day-of-week">
 			<div v-for="name in dayNames" :key="name">{{ name }}</div>
@@ -25,9 +25,10 @@
 
 <script>
 import dayjs from 'dayjs'
-import DateCell from './DateCell'
+import DateCell from './DateCell.vue'
 
 export default {
+	name: 'DatePicker',
 	components: {
 		DateCell
 	},
@@ -94,4 +95,4 @@ export default {
 }
 </script>
 
-<style lang="scss" src="@/assets/style.scss" scoped></style>
+<style lang="scss" src="./assets/style.scss" scoped></style>
