@@ -1,7 +1,20 @@
 # vue-klender
 
 Yet another date picker for [vuejs](https://vuejs.org).
-Not published yet.
+
+## Installation
+
+```
+npm install --save vue-klender
+```
+
+## Usage
+
+See `example/App.vue`.
+
+## Samples
+
+Run `npm run serve` to run app in `example` folder.
 
 ## To Do
 
