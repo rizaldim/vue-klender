@@ -1,12 +1,18 @@
 {
   "name": "vue-klender",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.14",
+  "author": "Rizaldi Martaputra <rizaldi.m@gmail.com> (https://rizaldim.com)",
+  "repository": "github:rizaldim/vue-klender",
+  "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve example/main.js",
+    "build": "vue-compile src -o dist",
     "lint": "vue-cli-service lint"
   },
+  "files": [
+    "dist/*"
+  ],
+  "main": "index.js",
   "dependencies": {
     "core-js": "^2.6.5",
     "dayjs": "^1.8.15",
@@ -22,6 +28,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "sass": "^1.22.6",
     "sass-loader": "^7.1.0",
+    "vue-compile": "^0.6.0",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {

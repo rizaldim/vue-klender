@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import DatePicker from './components/DatePicker'
+import DatePicker from '../src/DatePicker'
 
 export default {
   name: 'app',
