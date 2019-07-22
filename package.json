@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve example/main.js",
-    "build": "vue-compile src -o dist",
+    "build": "rm -rfv dist/* && vue-compile src -o dist",
     "lint": "vue-cli-service lint"
   },
   "files": [
