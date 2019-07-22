@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
 import DatePicker from '../src/DatePicker'
 
 export default {
@@ -17,7 +18,8 @@ export default {
   },
   data () {
     return {
-      dates: []
+      dates: [],
+      maxDate: dayjs().add(6, 'month').format('YYYY-MM-DD')
     }
   },
   methods: {

@@ -1,12 +1,12 @@
 {
   "name": "vue-klender",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Rizaldi Martaputra <rizaldi.m@gmail.com> (https://rizaldim.com)",
   "repository": "github:rizaldim/vue-klender",
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve example/main.js",
-    "build": "vue-compile src -o dist",
+    "build": "rm -rfv dist/* && vue-compile src -o dist",
     "lint": "vue-cli-service lint"
   },
   "files": [
