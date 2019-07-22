@@ -1,6 +1,6 @@
 <template>
   <button :class="cssClass" @click="onClick">
-    <time v-if="!differentMonth" :datetime="dateTime">{{ date }}</time>
+    <time v-if="!differentMonth" :datetime="dateTime">{{ dateNumber }}</time>
   </button>
 </template>
 
@@ -9,16 +9,14 @@ export default {
   name: 'DateCell',
   data () {
     return {
+      dateNumber: this.date.format('D'),
+      dateTime: this.date.format('YYYY-MM-DD'),
       selected: this.initialSelected
     }
   },
   props: {
-    dateTime: {
-      type: String,
-      required: true
-    },
     date: {
-      type: String,
+      type: Object,
       required: true
     },
     differentMonth: {
@@ -28,12 +26,17 @@ export default {
     initialSelected: {
       type: Boolean,
       default: false
+    },
+    selectable: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
     cssClass () {
       return {
         'date-cell': !this.differentMonth,
+        'date-cell--is-selectable': this.selectable,
         'date-cell--is-selected': !this.differentMonth && this.selected,
         'empty-cell': this.differentMonth
       }
@@ -41,7 +44,7 @@ export default {
   },
   methods: {
     onClick () {
-      if (!this.differentMonth) {
+      if (!this.differentMonth && this.selectable) {
         this.selected = !this.selected
         this.$emit('click')
       }
