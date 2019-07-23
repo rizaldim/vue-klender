@@ -57,6 +57,17 @@ export default {
 }
 ```
 
+You can use `min-date` and `max-date` to limit choosable time range. Use `YYYY-MM-DD`
+format. It defaults to today for `min-date` and a year from now for `max-date`.
+
+```vue
+<date-picker
+  min-date="2019-09-01"
+  max-date="2019-12-31"
+  @change-selected-dates="onChangeSelectedDates"
+/>
+```
+
 ## Samples
 
 Run `npm run serve` to run app in `example` folder.
@@ -73,5 +84,5 @@ Run `npm run serve` to run app in `example` folder.
 - [ ] Configurable month name and date number format.
 - [ ] Configurable css styling (color, width, etc).
 - [ ] Show holidays.
-- [ ] Localization.
+- [ ] Internationalization.
 - [ ] Add CI to build and publish.

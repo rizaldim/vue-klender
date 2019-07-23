@@ -1,34 +1,8 @@
 <template>
   <div class="cal">
     <div class="month-indicator">{{ monthString() }}</div>
-    <button type="button"
-      class="prev"
-      :class="{ 'prev--is-disabled': !this.prevIsEnabled }"
-      @click="onClickPrev()"
-      >
-      <svg viewBox="0 0 24 24">
-        <g data-name="Layer 2">
-          <g data-name="arrow-back">
-            <rect width="24" height="24" transform="rotate(90 12 12)" opacity="0"/>
-            <path d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .64-.23 1 1 0 0 0 .13-1.41L7.14 13H19a1 1 0 0 0 0-2z"/>
-          </g>
-        </g>
-      </svg>
-    </button>
-    <button type="button"
-      class="next"
-      :class="{ 'next--is-disabled': !this.nextIsEnabled }"
-      @click="onClickNext()"
-      >
-      <svg viewBox="0 0 24 24">
-        <g data-name="Layer 2">
-          <g data-name="arrow-forward">
-            <rect width="24" height="24" transform="rotate(-90 12 12)" opacity="0"/>
-            <path d="M5 13h11.86l-3.63 4.36a1 1 0 0 0 1.54 1.28l5-6a1.19 1.19 0 0 0 .09-.15c0-.05.05-.08.07-.13A1 1 0 0 0 20 12a1 1 0 0 0-.07-.36c0-.05-.05-.08-.07-.13a1.19 1.19 0 0 0-.09-.15l-5-6A1 1 0 0 0 14 5a1 1 0 0 0-.64.23 1 1 0 0 0-.13 1.41L16.86 11H5a1 1 0 0 0 0 2z"/>
-          </g>
-        </g>
-      </svg>
-    </button>
+    <prev-button :enabled="prevIsEnabled" @click="onClickPrev" />
+    <next-button :enabled="nextIsEnabled" @click="onClickNext" />
     <div class="day-of-week">
       <div v-for="name in dayNames()" :key="name">{{ name }}</div>
     </div>
@@ -47,39 +21,50 @@
 
 <script>
 import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+
 import DateCell from './DateCell'
+import PrevButton from './PrevButton'
+import NextButton from './NextButton'
+
+dayjs.extend(customParseFormat)
+const dateFormat = 'YYYY-MM-DD'
 
 export default {
   components: {
-    DateCell
+    DateCell,
+    PrevButton,
+    NextButton
   },
   data () {
     return {
-      firstDayOfCurrentMonth: dayjs().set('date', 1).startOf('day'),
-      selectedDates: []
+      firstDayOfCurrentMonth: dayjs(this.minDate, dateFormat).set('date', 1).startOf('day'),
+      selectedDates: [],
+      minDateInDayJs: dayjs(this.minDate, dateFormat),
+      maxDateInDayJs: dayjs(this.maxDate, dateFormat)
     }
   },
   props: {
     minDate: {
-      type: Object,
+      type: String,
       default () {
-        return dayjs().startOf('day')
+        return dayjs().startOf('day').format(dateFormat)
       }
     },
     maxDate: {
-      type: Object,
+      type: String,
       default () {
-        return dayjs().startOf('day').add(1, 'year')
+        return dayjs().startOf('day').add(1, 'year').format(dateFormat)
       }
     }
   },
   computed: {
     prevIsEnabled () {
-      return this.firstDayOfCurrentMonth.isAfter(this.minDate)
+      return this.firstDayOfCurrentMonth.isAfter(this.minDateInDayJs)
     },
     nextIsEnabled () {
       const lastDayOfCurrentMonth = this.firstDayOfCurrentMonth.endOf('month')
-      return lastDayOfCurrentMonth.isBefore(this.maxDate)
+      return lastDayOfCurrentMonth.isBefore(this.maxDateInDayJs)
     },
     cells () {
       const firstDayOfCurrentMonth = this.firstDayOfCurrentMonth
@@ -88,14 +73,14 @@ export default {
       const daysShownCount = endOfLastWeekOfCurrentMonth.diff(startOfFirstWeekOfCurrentMonth, 'day') + 1
 
       let day = startOfFirstWeekOfCurrentMonth
-      const cells = []
+      const result = []
       const currentMonth = firstDayOfCurrentMonth.get('month')
       for (var i = 0; i < daysShownCount; i++) {
         const date = day
         const differentMonth = day.get('month') != currentMonth
         const selected = this.isCellSelected(day, differentMonth)
-        const selectable = !day.isBefore(this.minDate) && !day.isAfter(this.maxDate)
-        cells.push({
+        const selectable = !day.isBefore(this.minDateInDayJs) && !day.isAfter(this.maxDateInDayJs)
+        result.push({
           date,
           differentMonth,
           selectable,
@@ -103,7 +88,7 @@ export default {
         })
         day = day.add(1, 'day')
       }
-      return cells
+      return result
     }
   },
   methods: {

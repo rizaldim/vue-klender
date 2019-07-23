@@ -43,15 +43,6 @@ button {
   top: 0;
 }
 
-.prev--is-disabled,
-.next--is-disabled {
-  cursor: default;
-
-  svg {
-    fill: #aaaaaa;
-  }
-}
-
 .day-of-week,
 .date-grid {
   display: grid;
@@ -77,7 +68,7 @@ button {
   border-radius: 25%;
 
   background-color: white;
-  color: #aaaaaa;
+  color: #ccc;
   cursor: default;
   font-size: 16px;
 }

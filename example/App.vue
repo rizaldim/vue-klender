@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <date-picker @change-selected-dates="onChangeSelectedDates" />
+    <date-picker
+      min-date="2019-09-01"
+      max-date="2019-12-31"
+      @change-selected-dates="onChangeSelectedDates"
+    />
     <ol>
       <li v-for="date in dates" :key="date">{{ date }}</li>
     </ol>
