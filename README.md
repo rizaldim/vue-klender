@@ -1,6 +1,9 @@
 # vue-klender
 
-Yet another date picker for [vuejs](https://vuejs.org).
+Yet another date picker for [vuejs](https://vuejs.org). Currently still using
+CSS Grid for layout so that it won't work in browser without
+that feature. This component is still a work in progress so that it might not
+suit your use case. See [to do section](#to-do) for planned features.
 
 ## Installation
 
@@ -10,36 +13,48 @@ npm install --save vue-klender
 
 ## Usage
 
-```vue
-<template>
-  <div id="app">
-    <date-picker @change-selected-dates="onChangeSelectedDates" />
-    <ol>
-      <li v-for="date in dates" :key="date">{{ date }}</li>
-    </ol>
-  </div>
-</template>
+Import and register in script.
 
+```vue
 <script>
 import DatePicker from 'vue-klender'
 
 export default {
-  name: 'app',
+  ...
   components: {
     DatePicker
   },
-  data () {
-    return {
-      dates: []
-    }
-  },
+  ...
+}
+</script>
+```
+
+Then use it in template.
+
+```vue
+<template>
+  <div id="app">
+    <date-picker @change-selected-dates="onChangeSelectedDates" />
+    // ...
+  </div>
+</template>
+```
+
+Everytime a date is clicked, it will emit `change-selected-dates` event
+with string of selected dates in an array. Selected dates is in `YYYY-MM-DD`
+format. In example above, we call `onChangeSelectedDates` method every time
+`change-selected-dates` event occurred.
+
+```javascript
+export default {
+  ...
   methods: {
     onChangeSelectedDates (dates) {
       this.dates = dates
     }
   }
+  ...
 }
-</script>
 ```
 
 ## Samples
