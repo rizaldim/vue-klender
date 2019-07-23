@@ -35,8 +35,8 @@ export default {
       this.dates = dates
     },
     clearSelected () {
+      this.dates = []
       this.$refs.datePicker.clear()
-      this.dates.splice(0, this.dates.length)
     }
   }
 }

@@ -1,18 +1,15 @@
 <template>
   <div class="cal">
-    <div class="month-indicator">{{ monthString() }}</div>
+    <div class="month-indicator">{{ monthString }}</div>
     <prev-button :enabled="prevIsEnabled" @click="onClickPrev" />
     <next-button :enabled="nextIsEnabled" @click="onClickNext" />
     <div class="day-of-week">
-      <div v-for="name in dayNames()" :key="name">{{ name }}</div>
+      <div v-for="name in dayNames" :key="name">{{ name }}</div>
     </div>
     <div class="date-grid">
       <date-cell v-for="(cell, index) in cells"
         :key="cell.date.valueOf()"
-        :date="cell.date"
-        :selected="cell.selected"
-        :different-month="cell.differentMonth"
-        :selectable="cell.selectable"
+        :cell="cell"
         @click="onClickDate(cell, index)"
       />
     </div>
@@ -37,7 +34,14 @@ export default {
     NextButton
   },
   data () {
+    const dayNames = []
+    const startOfWeek = dayjs().startOf('week')
+    for (var i = 0; i < 7; i++) {
+      dayNames.push(startOfWeek.add(i, 'day').format('dd'))
+    }
+
     return {
+      dayNames,
       firstDayOfCurrentMonth: dayjs(this.minDate, dateFormat).set('date', 1).startOf('day'),
       selectedDates: [...this.initialSelectedDates],
       minDateInDayJs: dayjs(this.minDate, dateFormat),
@@ -45,7 +49,7 @@ export default {
       cells: []
     }
   },
-  mounted () {
+  created () {
     this.cells = this.calculateCells()
   },
   props: {
@@ -75,6 +79,9 @@ export default {
     nextIsEnabled () {
       const lastDayOfCurrentMonth = this.firstDayOfCurrentMonth.endOf('month')
       return lastDayOfCurrentMonth.isBefore(this.maxDateInDayJs)
+    },
+    monthString () {
+      return this.firstDayOfCurrentMonth.format('MMMM YYYY')
     }
   },
   methods: {
@@ -108,17 +115,6 @@ export default {
       }
       return result
     },
-    dayNames () {
-      var names = []
-      const startOfWeek = dayjs().startOf('week')
-      for (var i = 0; i < 7; i++) {
-        names.push(startOfWeek.add(i, 'day').format('dd'))
-      }
-      return names
-    },
-    monthString () {
-      return this.firstDayOfCurrentMonth.format('MMMM YYYY')
-    },
     onClickPrev () {
       if (this.prevIsEnabled) {
         this.firstDayOfCurrentMonth = this.firstDayOfCurrentMonth.subtract(1, 'month')
@@ -141,16 +137,10 @@ export default {
         this.selectedDates.push(dateTime)
       }
       this.$emit('change-selected-dates', this.selectedDates)
-
       this.cells.splice(index, 1, Object.assign(cell, { selected: !cell.selected }))
     },
-    isCellSelected (date, differentMonth) {
-      if (differentMonth) return false
-      const day = date.format('YYYY-MM-DD')
-      return this.selectedDates.indexOf(day) > -1
-    },
     clear () {
-      this.selectedDates.splice(0, this.selectedDates.length)
+      this.selectedDates = [...this.initialSelectedDates]
       this.cells = this.calculateCells()
     }
   }
@@ -208,40 +198,4 @@ button {
   line-height: 40px;
   text-align: center;
 }
-
-.empty-cell {
-  background-color: white;
-  cursor: default;
-}
-
-.date-cell {
-  height: 36px;
-  padding: 0;
-  border-radius: 25%;
-
-  background-color: white;
-  color: #ccc;
-  cursor: default;
-  font-size: 16px;
-}
-
-.date-cell--is-selectable {
-  color: black;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #add8e6	;
-    color: white;
-  }
-}
-
-.date-cell--is-selected {
-  background-color: purple	;
-  color: white;
-  cursor: pointer;
-
-  &:hover {
-    background-color: purple	;
-    color: white;
-  }
-}</style>
+</style>
