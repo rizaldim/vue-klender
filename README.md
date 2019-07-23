@@ -41,7 +41,7 @@ Then use it in template.
 ```
 
 Everytime a date is clicked, it will emit `change-selected-dates` event
-with string of selected dates in an array. Selected dates is in `YYYY-MM-DD`
+with string of selected dates in an array. Selected dates are in `YYYY-MM-DD`
 format. In example above, we call `onChangeSelectedDates` method every time
 `change-selected-dates` event occurred.
 
