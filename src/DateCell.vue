@@ -7,13 +7,6 @@
 <script>
 export default {
   name: 'DateCell',
-  data () {
-    return {
-      dateNumber: this.date.format('D'),
-      dateTime: this.date.format('YYYY-MM-DD'),
-      selected: this.initialSelected
-    }
-  },
   props: {
     date: {
       type: Object,
@@ -23,7 +16,7 @@ export default {
       type: Boolean,
       default: true
     },
-    initialSelected: {
+    selected: {
       type: Boolean,
       default: false
     },
@@ -33,6 +26,12 @@ export default {
     }
   },
   computed: {
+    dateNumber () {
+      return this.date.format('D')
+    },
+    dateTime () {
+      return this.date.format('YYYY-MM-DD')
+    },
     cssClass () {
       return {
         'date-cell': !this.differentMonth,
@@ -45,7 +44,6 @@ export default {
   methods: {
     onClick () {
       if (!this.differentMonth && this.selectable) {
-        this.selected = !this.selected
         this.$emit('click')
       }
     }

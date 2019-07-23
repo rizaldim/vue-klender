@@ -5,7 +5,7 @@
     :class="{ 'next--is-disabled': !enabled }"
     @click="$emit('click')"
   >
-    <svg viewBox="0 0 24 24">
+    <svg :class="{ 'is-disabled': !enabled }" viewBox="0 0 24 24">
       <g data-name="Layer 2">
         <g data-name="arrow-forward">
           <rect width="24" height="24" transform="rotate(-90 12 12)" opacity="0" />
@@ -42,7 +42,7 @@ export default {
   cursor: default;
 }
 
-.next--is-disabled svg {
+svg.is-disabled {
   fill: #aaaaaa;
 }
 </style>
