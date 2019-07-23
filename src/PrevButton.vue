@@ -28,6 +28,13 @@ export default {
 </script>
 
 <style scoped>
+.prev {
+  width: 36px;
+  height: 36px;
+
+  background-color: transparent;
+}
+
 .prev--is-disabled {
   cursor: default;
 }

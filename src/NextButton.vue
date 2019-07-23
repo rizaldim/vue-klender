@@ -31,6 +31,13 @@ export default {
 </script>
 
 <style scoped>
+.next {
+  width: 36px;
+  height: 36px;
+
+  background-color: transparent;
+}
+
 .next--is-disabled {
   cursor: default;
 }

@@ -3,6 +3,7 @@
     <date-picker
       min-date="2019-09-01"
       max-date="2019-12-31"
+      :initial-selected-dates="dates"
       @change-selected-dates="onChangeSelectedDates"
     />
     <ol>
@@ -22,7 +23,12 @@ export default {
   },
   data () {
     return {
-      dates: [],
+      dates: [
+        '2019-09-07',
+        '2019-09-14',
+        '2019-09-27',
+        '2019-10-07'
+      ],
       maxDate: dayjs().add(6, 'month').format('YYYY-MM-DD')
     }
   },

@@ -14,7 +14,7 @@
         :different-month="cell.differentMonth"
         :selectable="cell.selectable"
         @click="onClickDate(cell.date)"
-        />
+      />
     </div>
   </div>
 </template>
@@ -39,7 +39,7 @@ export default {
   data () {
     return {
       firstDayOfCurrentMonth: dayjs(this.minDate, dateFormat).set('date', 1).startOf('day'),
-      selectedDates: [],
+      selectedDates: this.initialSelectedDates,
       minDateInDayJs: dayjs(this.minDate, dateFormat),
       maxDateInDayJs: dayjs(this.maxDate, dateFormat)
     }
@@ -55,6 +55,12 @@ export default {
       type: String,
       default () {
         return dayjs().startOf('day').add(1, 'year').format(dateFormat)
+      }
+    },
+    initialSelectedDates: {
+      type: Array,
+      default () {
+        return []
       }
     }
   },
@@ -132,4 +138,91 @@ export default {
 }
 </script>
 
-<style src="./style.scss" lang="scss" scoped></style>
+<style lang="scss" scoped>
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+.cal {
+  box-sizing: border-box;
+  width: 300px;
+
+  position: relative;
+
+  font-family: sans-serif;
+}
+
+.month-indicator {
+  height: 40px;
+
+  line-height: 40px;
+  text-align: center;
+}
+
+.prev {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.next {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.day-of-week,
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 4px;
+}
+
+.day-of-week {
+  height: 40px;
+
+  line-height: 40px;
+  text-align: center;
+}
+
+.empty-cell {
+  background-color: white;
+  cursor: default;
+}
+
+.date-cell {
+  height: 36px;
+  padding: 0;
+  border-radius: 25%;
+
+  background-color: white;
+  color: #ccc;
+  cursor: default;
+  font-size: 16px;
+}
+
+.date-cell--is-selectable {
+  color: black;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #add8e6	;
+    color: white;
+  }
+}
+
+.date-cell--is-selected {
+  background-color: purple	;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: purple	;
+    color: white;
+  }
+}</style>
