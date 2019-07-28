@@ -91,6 +91,16 @@ p {
   padding: 2%;
 }
 
+.sample__wrapper {
+  display: flex;
+}
+
+.sample__wrapper > div:nth-child(2) {
+  flex-grow: 1;
+  padding: 40px;
+}
+
 .cal {
   margin: 40px auto;
 }
+

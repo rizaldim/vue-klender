@@ -5,7 +5,7 @@
   "repository": "github:rizaldim/vue-klender",
   "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve example/main.js",
+    "serve": "vue-cli-service serve sample/main.js",
     "build": "rm -rfv dist/* && vue-compile src -o dist",
     "lint": "vue-cli-service lint"
   },
