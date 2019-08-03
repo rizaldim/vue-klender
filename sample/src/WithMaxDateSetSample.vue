@@ -1,11 +1,10 @@
 <template>
   <div class="sample">
-    <h2>Using default props</h2>
+    <h2>Set Max Date</h2>
     <p>
-      With default props date picker will use today as minimal date and 1 year
-      from now as maximal date.
+      Set max date props.
     </p>
-    <div class="sample__wrapper">
+    <div class="cal-and-control-wrapper">
       <div>
         <date-picker
           ref="datePicker"
@@ -22,10 +21,10 @@
 </template>
 
 <script>
-import DatePicker from '../src/DatePicker'
+import DatePicker from '../../src/DatePicker'
 
 export default {
-  name: 'DefaultPropsSample',
+  name: 'WithMaxDateSetSample',
   components: {
     DatePicker
   },

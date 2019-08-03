@@ -16,7 +16,11 @@
   }
 }
 
-.sample__wrapper {
+.sample:not(:first-of-type) {
+  margin-top: 48px;
+}
+
+.cal-and-control-wrapper {
   display: flex;
   margin-top: 32px;
 }
