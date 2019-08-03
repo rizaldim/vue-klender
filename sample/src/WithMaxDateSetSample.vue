@@ -2,12 +2,13 @@
   <div class="sample">
     <h2>Set Max Date</h2>
     <p>
-      Set max date props.
+      Set <code>:max-date</code> 3 months from now.
     </p>
     <div class="cal-and-control-wrapper">
       <div>
         <date-picker
           ref="datePicker"
+          :max-date="maxDate"
           @change-selected-dates="onChangeSelectedDates"
         />
       </div>
@@ -21,6 +22,7 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
 import DatePicker from '../../src/DatePicker'
 
 export default {
@@ -30,7 +32,8 @@ export default {
   },
   data () {
     return {
-      dates: []
+      dates: [],
+      maxDate: dayjs().add(3, 'month').format('YYYY-MM-DD')
     }
   },
   computed: {
