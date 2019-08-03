@@ -12,16 +12,12 @@
           @change-selected-dates="onChangeSelectedDates"
         />
       </div>
-      <div>
+      <div class="control-area">
         <button @click="clearSelected">Clear selected</button>
         <p>Selected dates:</p>
-        <ol>
-          <li v-for="date in dates" :key="date">{{ date }}</li>
-        </ol>
+        <p>{{ datesString }}</p>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -36,6 +32,18 @@ export default {
   data () {
     return {
       dates: []
+    }
+  },
+  computed: {
+    datesString () {
+      var result = ""
+      for (let i = 0; i < this.dates.length; i++) {
+        if (i > 0) {
+          result += ", "
+        }
+        result += this.dates[i]
+      }
+      return result
     }
   },
   methods: {

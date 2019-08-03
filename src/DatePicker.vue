@@ -50,6 +50,9 @@ export default {
     }
   },
   created () {
+    if (!this.multiSelect) {
+      this.selectedDates = this.initialSelectedDates[0]
+    }
     this.cells = this.calculateCells()
   },
   props: {
@@ -70,6 +73,10 @@ export default {
       default () {
         return []
       }
+    },
+    multiSelect: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -176,12 +183,16 @@ button {
 }
 
 .prev {
+  margin-left: 8px;
+
   position: absolute;
   left: 0;
   top: 0;
 }
 
 .next {
+  margin-right: 8px;
+
   position: absolute;
   right: 0;
   top: 0;

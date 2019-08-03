@@ -29,8 +29,8 @@ export default {
 
 <style scoped>
 .prev {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 40px;
 
   background-color: transparent;
 }
