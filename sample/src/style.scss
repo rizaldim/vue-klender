@@ -5,30 +5,30 @@
 @import 'style/element.css';
 
 #app {
-  width: 100%;
-  max-width: 800px;
-  padding: 5%;
+	width: 100%;
+	max-width: 800px;
+	padding: 5%;
 }
 
 .cal {
-  button {
-    padding: 0;
-  }
+	button {
+		padding: 0;
+	}
 }
 
 .sample:not(:first-of-type) {
-  margin-top: 48px;
+	margin-top: 48px;
 }
 
 .cal-and-control-wrapper {
-  display: flex;
-  margin-top: 32px;
+	display: flex;
+	margin-top: 32px;
 }
 
 .control-area {
-  margin-left: 48px;
+	margin-left: 48px;
 }
 
 .control-area p {
-  margin-top: 16px;
+	margin-top: 16px;
 }

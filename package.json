@@ -1,56 +1,56 @@
 {
-  "name": "vue-klender",
-  "version": "0.2.1",
-  "author": "Rizaldi Martaputra <rizaldi.m@gmail.com> (https://rizaldim.com)",
-  "repository": "github:rizaldim/vue-klender",
-  "license": "MIT",
-  "scripts": {
-    "build": "rm -rfv dist/* && vue-compile src -o dist",
-    "lint": "vue-cli-service lint"
-  },
-  "files": [
-    "dist/*"
-  ],
-  "main": "index.js",
-  "dependencies": {
-    "core-js": "^2.6.5",
-    "dayjs": "^1.8.15",
-    "lodash": "^4.17.13",
-    "vue": "^2.6.10"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.9.2",
-    "@vue/cli-plugin-eslint": "^3.9.2",
-    "@vue/cli-service": "^3.9.3",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "sass": "^1.22.6",
-    "sass-loader": "^7.1.0",
-    "vue-compile": "^0.6.0",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+	"name": "vue-klender",
+	"version": "0.2.1",
+	"author": "Rizaldi Martaputra <rizaldi.m@gmail.com> (https://rizaldim.com)",
+	"repository": "github:rizaldim/vue-klender",
+	"license": "MIT",
+	"scripts": {
+		"build": "rm -rfv dist/* && vue-compile src -o dist",
+		"lint": "vue-cli-service lint"
+	},
+	"files": [
+		"dist/*"
+	],
+	"main": "index.js",
+	"dependencies": {
+		"core-js": "^2.6.5",
+		"dayjs": "^1.8.15",
+		"lodash": "^4.17.13",
+		"vue": "^2.6.10"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "^3.9.2",
+		"@vue/cli-plugin-eslint": "^3.9.2",
+		"@vue/cli-service": "^3.9.3",
+		"babel-eslint": "^10.0.1",
+		"eslint": "^5.16.0",
+		"eslint-plugin-vue": "^5.0.0",
+		"sass": "^1.22.6",
+		"sass-loader": "^7.1.0",
+		"vue-compile": "^0.6.0",
+		"vue-template-compiler": "^2.6.10"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"extends": [
+			"plugin:vue/essential",
+			"eslint:recommended"
+		],
+		"rules": {},
+		"parserOptions": {
+			"parser": "babel-eslint"
+		}
+	},
+	"postcss": {
+		"plugins": {
+			"autoprefixer": {}
+		}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions"
+	]
 }
