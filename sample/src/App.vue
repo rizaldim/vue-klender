@@ -1,20 +1,28 @@
 <template>
 	<div id="app">
 		<h1>vue-klender Samples</h1>
-		<default-props-sample />
-		<with-max-date-set-sample />
+		<select v-model="sampleSelected">
+			<option value="" disabled>Select sample</option>
+			<option value="default-props">Default props</option>
+			<option value="max-date-set">With max date set</option>
+		</select>
+		<router-view></router-view>
 	</div>
 </template>
 
 <script>
-import DefaultPropsSample from './DefaultPropsSample'
-import WithMaxDateSetSample from './WithMaxDateSetSample'
-
 export default {
 	name: 'app',
-	components: {
-		DefaultPropsSample,
-		WithMaxDateSetSample
+	data () {
+		return {
+			sampleSelected: ""
+		}
+	},
+	watch: {
+		sampleSelected: function (value) {
+			debugger
+			this.$router.push({ path: value})
+		}
 	}
 }
 </script>
