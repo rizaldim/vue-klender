@@ -21,7 +21,7 @@ npm install
 npm run serve
 ```
 
-Then open localhost:8080.
+Then open http://localhost:8080.
 
 ## Usage
 
