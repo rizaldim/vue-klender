@@ -20,11 +20,11 @@ Import and register in script.
 import DatePicker from 'vue-klender'
 
 export default {
-  ...
-  components: {
-    DatePicker
-  },
-  ...
+	...
+	components: {
+		DatePicker
+	},
+	...
 }
 </script>
 ```
@@ -33,10 +33,10 @@ Then use it in template.
 
 ```vue
 <template>
-  <div id="app">
-    <date-picker @change-selected-dates="onChangeSelectedDates" />
-    // ...
-  </div>
+	<div id="app">
+		<date-picker @change-selected-dates="onChangeSelectedDates" />
+		// ...
+	</div>
 </template>
 ```
 
@@ -47,13 +47,13 @@ format. In example above, we call `onChangeSelectedDates` method every time
 
 ```javascript
 export default {
-  ...
-  methods: {
-    onChangeSelectedDates (dates) {
-      this.dates = dates
-    }
-  }
-  ...
+	...
+	methods: {
+		onChangeSelectedDates (dates) {
+			this.dates = dates
+		}
+	}
+	...
 }
 ```
 
@@ -62,9 +62,9 @@ format. It defaults to today for `min-date` and a year from now for `max-date`.
 
 ```vue
 <date-picker
-  min-date="2019-09-01"
-  max-date="2019-12-31"
-  @change-selected-dates="onChangeSelectedDates"
+	min-date="2019-09-01"
+	max-date="2019-12-31"
+	@change-selected-dates="onChangeSelectedDates"
 />
 ```
 
@@ -77,7 +77,7 @@ Run `npm run serve` to run app in `example` folder.
 - [x] Return selected dates to parent component.
 - [x] Can set minimal and maximal selectable dates. Default to today and a year from now respectively.
 - [x] Clearable.
-- [ ] Set initial selected dates.
+- [x] Set initial selected dates.
 - [ ] Single date, multiple dates, or range of dates.
 - [ ] Array of selectable dates. For example: can only select July 20, July 27, and Aug 1.
 - [ ] Slide in and out animation when changing month.

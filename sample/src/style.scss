@@ -1,0 +1,34 @@
+@import 'style/generic.reset.css';
+@import 'style/generic.boxsizing.css';
+@import 'style/generic.systemfont.css';
+
+@import 'style/element.css';
+
+#app {
+	width: 100%;
+	max-width: 800px;
+	margin: 2em 1em;
+}
+
+.cal {
+	button {
+		padding: 0;
+	}
+}
+
+.sample {
+	margin-top: 48px;
+}
+
+.cal-and-control-wrapper {
+	display: flex;
+	margin-top: 32px;
+}
+
+.control-area {
+	margin-left: 48px;
+}
+
+.control-area p {
+	margin-top: 16px;
+}
