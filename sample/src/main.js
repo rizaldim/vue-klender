@@ -4,6 +4,7 @@ import App from './App'
 
 import DefaultPropsSample from './DefaultPropsSample'
 import WithMaxDateSetSample from './WithMaxDateSetSample'
+import InitialSelectedDates from './InitialSelectedDates'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -18,6 +19,10 @@ const router = new VueRouter({
 		{
 			path: '/max-date-set',
 			component: WithMaxDateSetSample
+		},
+		{
+			path: '/initial-selected',
+			component: InitialSelectedDates
 		}
 	]
 })

@@ -5,6 +5,7 @@
 			<option value="" disabled>Select sample</option>
 			<option value="default-props">Default props</option>
 			<option value="max-date-set">With max date set</option>
+			<option value="initial-selected">With initial selected dates</option>
 		</select>
 		<router-view></router-view>
 	</div>
@@ -20,7 +21,6 @@ export default {
 	},
 	watch: {
 		sampleSelected: function (value) {
-			debugger
 			this.$router.push({ path: value})
 		}
 	}

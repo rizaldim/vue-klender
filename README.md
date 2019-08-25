@@ -76,7 +76,7 @@ Run `npm run serve` to run app in `example` folder.
 
 - [x] Return selected dates to parent component.
 - [x] Can set minimal and maximal selectable dates. Default to today and a year from now respectively.
-- [ ] Set initial selected dates.
+- [x] Set initial selected dates.
 - [ ] Single date, multiple dates, or range of dates.
 - [ ] Array of selectable dates. For example: can only select July 20, July 27, and Aug 1.
 - [ ] Slide in and out animation when changing month.
