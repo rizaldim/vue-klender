@@ -11,6 +11,18 @@ suit your use case. See [to do section](#to-do) for planned features.
 npm install --save vue-klender
 ```
 
+## Sample
+
+Clone this repo and then
+
+```
+cd sample
+npm install
+npm run serve
+```
+
+Then open localhost:8080.
+
 ## Usage
 
 Import and register in script.
